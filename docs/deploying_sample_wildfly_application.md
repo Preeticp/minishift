@@ -1,32 +1,34 @@
 # Deploying a sample WildFly application
 
-User Story:
-User downloads and starts Minishift (which deploys an instance of OpenShift Origin locally) in order to launch a sample Hello World application using WildFly.
+This document guides you on how to deploy a sample Hello World application using WildFly, on an OpenShift Origin instance provisioned by Minishift.
 
 <!-- MarkdownTOC -->
 
-- [Objective](#objective)
-- [Prerequisites](#prerequisites)
-- [Deploying a Hello World WildFly application](#deploying-a-hello-world-wildfly-application)
+- [Overview](#overview)
+- [Setup](#setup)
+- [Deploying a Hello World application](#deploying-a-hello-world-application)
 - [Additional resources](#additional resources)
 
 
 <!-- /MarkdownTOC -->
 
-<a name="objective"></a>
-## Objective
-To deploy a Hello World application using WildFly, on an OpenShift Origin instance provisioned by Minishift.
+<a name="overview"></a>
+## Overview
+The following sections guide you through creating a project that contains a sample Wildfly application in OpenShift Origin.
+You can create a new application in OpenShift Origin from source code, images and/or templates. In this example we use source code along with the WildFly Imagestream to deploy a Hello World application.
 
-<a name="prerequisites"></a>
-## Prerequisites:
-You can create a new application in OpenShift Origin either from a source code, an image or a template. In this example we use source code along with the WildFly Imagestream to deploy a Hello World application.
+To create a new application, you need to have your source code hosted on the internet and accessible through Git. For this tutorial you can use the code in this [Sample Application](https://github.com/openshiftdemos/os-sample-java-web) hosted on GitHub. The Sample Application used here contains the source code for a simple Java web application with a single Jsp file that prints out a Hello World message.
 
-1. To use source code to deploy the application, you need to have your source code hosted on the internet and accessible through GitHub. Fork and clone this [Sample Application](https://github.com/openshiftdemos/os-sample-java-web) repository. The Sample Application used here contains the source code for a simple Java web application with a single Jsp file that prints out a Hello World message and is hosted on GitHub.  
 
-1. Ensure that you have installed and started Minishift as per the [Installation documentation](https://github.com/minishift/minishift/blob/master/README.md#installation), this will automatically provision an instance of OpenShift Origin for you.
+<a name="setup"></a>
+## Setup
 
-<a name="deploying-a-hello-world-wildfly-application"></a>
-## Deploying a Hello World WildFly application
+1. Fork the [Sample Application](https://github.com/openshiftdemos/os-sample-java-web) repository on GitHub. Note that, you will need to clone the repository to your local machine if you want to edit your application.  
+
+1. Ensure that you have installed and started Minishift as per the [Installation documentation](https://github.com/minishift/minishift/blob/master/README.md#installation). This will automatically provision an instance of OpenShift Origin for you.
+
+<a name="deploying-a-hello-world-application"></a>
+## Deploying a Hello World application
 
 Once you have started Minishift, follow these instructions to deploy a Hello World application using WildFly in OpenShift:
 
@@ -109,8 +111,8 @@ Once you have started Minishift, follow these instructions to deploy a Hello Wor
 
         http://myapp-myproject.192.168.42.205.xip.io to pod port 8080-tcp (svc/myapp)
           dc/myapp deploys istag/myapp:latest <-
-            bc/myapp source builds https://github.com/Preeticp/os-sample-java-web on openshift/wildfly:latest
-              build #1 running for 4 minutes - 74cdd67: README added (Jorge Morales Pou <jorgemoralespou@users.noreply.github.com>)
+            bc/myapp source builds https://github.com/<GitHub username>/os-sample-java-web on openshift/wildfly:latest
+              build #1 running for 4 minutes - 74cdd67: README added (<username> <username@users.noreply.github.com>)
             deployment #1 waiting on image or update
 
         Warnings:
